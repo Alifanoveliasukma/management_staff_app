@@ -10,5 +10,6 @@ class AdminController extends Controller
     function index(){
         echo "Halo selamat datang";
         echo "<h1>".Auth::user()->name . "</h1>";
+        echo "<a href='logout'>Logout >></a> ";
     }
 }
