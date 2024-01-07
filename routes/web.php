@@ -1,6 +1,6 @@
 <?php
 
-use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\SesiController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,17 +14,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-Route::get('lead-page', function() {
-    return 'Halaman untuk Lead';
-})->middleware('role:lead')->name('lead.page');
+Route::get('/',[SesiController::class, 'index']);
+Route::post('/',[SesiController::class, 'login']);
 
-Route::get('staf-page', function() {
-    return 'Halaman untuk Staf';
-})->middleware('role:staf')->name('staf.page');
-
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
