@@ -13,40 +13,45 @@ class UserSeeder extends Seeder
      */
     public function run(): void
     {
-        $admin = User::create([
+        $adminA = User::create([
             'name' => 'lead A',
             'email' => 'leada@gmail.com',
             'password' => bcrypt('12345678'),
         ]);
-        $admin = User::create([
+        $adminB = User::create([
             'name' => 'lead B',
             'email' => 'leadb@gmail.com',
             'password' => bcrypt('12345678'),
         ]);
-        $admin = User::create([
+        $adminC = User::create([
             'name' => 'lead C',
             'email' => 'leadc@gmail.com',
             'password' => bcrypt('12345678'),
         ]);
 
-        $admin->assignRole('lead');
+        $adminA->assignRole('lead');
+        $adminB->assignRole('lead');
+        $adminC->assignRole('lead');
 
-        $user = User::create([
+
+        $userA = User::create([
             'name' => 'Staf A',
             'email' => 'usera@gmail.com',
             'password' => bcrypt('12345678'),
         ]);
-        $user = User::create([
+        $userB = User::create([
             'name' => 'Staf B',
             'email' => 'userb@gmail.com',
             'password' => bcrypt('12345678'),
         ]);
-        $user = User::create([
+        $userC = User::create([
             'name' => 'Staf C',
             'email' => 'userc@gmail.com',
             'password' => bcrypt('12345678'),
         ]);
 
-        $user->assignRole('staf');
+        $userA->assignRole('staf');
+        $userB->assignRole('staf');
+        $userC->assignRole('staf');
     }
 }
