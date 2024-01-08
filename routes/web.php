@@ -27,8 +27,8 @@ Route::get('/home', function(){
 
 Route::middleware(['auth'])->group(function(){
     Route::get('/admin', [AdminController::class, 'index']);
-    Route::get('/admin/leader', [AdminController::class, 'lead']);
-    Route::get('/admin/staf', [AdminController::class, 'staf']);
+    Route::get('/admin/leader', [AdminController::class, 'lead'])->middleware('userAkses:lead');
+    Route::get('/admin/staf', [AdminController::class, 'staf'])->middleware('userAkses:staf');
     Route::get('/logout', [SesiController::class, 'logout']);
 });
 
