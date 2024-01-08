@@ -7,6 +7,11 @@ use Illuminate\Support\Facades\Auth;
 
 class AdminController extends Controller
 {
+
+    function view()
+    {
+        return view('master');
+    }
     function index()
     {
         return view('admin');

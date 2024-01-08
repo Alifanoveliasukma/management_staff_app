@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+Route::get('/view', [AdminController::class, 'view']);
 
 Route::middleware(['guest'])->group(function(){ 
     Route::get('/', [SesiController::class, 'index'])->name('login');
