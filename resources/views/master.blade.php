@@ -64,7 +64,7 @@
 							<a href="#subPages" data-toggle="collapse" class="collapsed"><i class="lnr lnr-file-empty"></i> <span>Buat Laporan</span> <i class="icon-submenu lnr lnr-chevron-left"></i></a>
 							<div id="subPages" class="collapse ">
 								<ul class="nav">
-									<li><a href="page-profile.html" class="">Profile</a></li>
+									<li><a href="/admin/staf/laporan" class="">Laporan</a></li>
 								</ul>
 							</div>
 						</li>

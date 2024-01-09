@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\ReportController;
 use App\Http\Controllers\SesiController;
 use Illuminate\Support\Facades\Route;
 
@@ -31,6 +32,8 @@ Route::middleware(['auth'])->group(function(){
     Route::get('/admin/leader', [AdminController::class, 'lead'])->middleware('userAkses:lead');
     Route::get('/admin/staf', [AdminController::class, 'staf'])->middleware('userAkses:staf');
     Route::get('/logout', [SesiController::class, 'logout']);
+    Route::get('/admin/staf/laporan',[ReportController::class, 'create']);
+    Route::post('/admin/staf/kirim', [ReportController::class, 'store'])->middleware('userAkses:staf')->name('admin.staf.kirim');
 });
 
 

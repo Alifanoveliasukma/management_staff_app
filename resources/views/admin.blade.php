@@ -56,20 +56,20 @@
                       <th>Report Title</th>
                       <th>Recipient</th>
                       <th>Detail</th>
-                      <th>Files</th>
                       <th>Status</th>
                     </tr>
                   </thead>
                   <tbody>
+                    @foreach ($reports as $k => $item)
                     <tr>
-                      <td>1</td>
-                      <td>8-1-2024</td>
-                      <td>Landing Page</td>
-                      <td>Lead | rehan</td>
-                      <td>klik</td>
-                      <td>Klik</td>
-                      <td>Proses</td>
+                      <td>{{$k+1}}</td>
+                      <td>{{$item->waktu}}</td>
+                      <td>{{$item->judul}}</td>
+                      <td>{{$item->name}}</td>
+                      <td>{{$item->detail}}</td>
+                      <td>{{$item->status}}</td>
                     </tr>
+                    @endforeach
                   </tbody>
                 </table>
               </div>
