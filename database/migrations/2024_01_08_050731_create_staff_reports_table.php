@@ -13,7 +13,17 @@ return new class extends Migration
     {
         Schema::create('staff_reports', function (Blueprint $table) {
             $table->id();
+            $table->timestamp('waktu');
+            $table->string('judul');
+            $table->unsignedBigInteger('user_id'); // Kolom untuk staf
+            $table->unsignedBigInteger('lead_id'); // kolom
+            $table->text('detail');
+            $table->string('file')->nullable();
+            $table->enum('status', ['diterima', 'ditolak', 'proses'])->default('proses');
             $table->timestamps();
+
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('lead_id')->references('id')->on('users');
         });
     }
 

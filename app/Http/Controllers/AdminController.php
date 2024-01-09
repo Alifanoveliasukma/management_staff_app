@@ -19,8 +19,8 @@ class AdminController extends Controller
         return view('admin', compact('reports'));
     }
     function lead(){
-        $reports = Reportstaf::all();
-        return view('admin', compact('reports'));
+        $terima_laporan = Reportstaf::with('staff')->paginate(30);
+        return view('admin', compact('terima_laporan'));
     }
     function staf(){
         $reports = Reportstaf::all();

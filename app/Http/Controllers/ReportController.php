@@ -20,9 +20,7 @@ class ReportController extends Controller
 
     public function store(Request $request)
     {
-        $reports = DB::table('users')
-                    ->join('staff_reports', 'staff_reports.lead_id', '=', 'users.id')
-                    ->get();
+        $reports = Reportstaf::with('lead')->paginate(30);
 
         $request->validate([
             'judul' => 'required|string',
@@ -30,6 +28,11 @@ class ReportController extends Controller
             'detail' => 'required|string',
             'file' => 'nullable|file|max:10240', // 10 MB max, adjust as needed
         ]);
+
+        if ($request->input('lead_id') == 2 || $request->input('lead_id') == 3 || $request->input('lead_id') == 4  ) {
+            return redirect('/admin/staf/laporan')->with(['error' => 'Anda tidak boleh mengirim laporan kepada lead selain lead A']);
+
+        }
 
         $staffReport = new Reportstaf;
         $staffReport->waktu = now();
@@ -46,9 +49,10 @@ class ReportController extends Controller
             $staffReport->file = $fileName;
         }
 
+
         $staffReport->save();
         
-        return view('admin', compact('reports'));
+        return view('admin', compact('reports','terima_laporan'));
     }
 }
 

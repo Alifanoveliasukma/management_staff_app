@@ -8,7 +8,6 @@
       <div class="panel panel-headline">
         <div class="panel-heading">
           <h3 class="panel-title">Selamat Datang <strong>{{ Auth::user()->name }}</strong></h3>
-          <div>
             @if(Auth::user()->role == 'lead')
             <div class="panel">
               <div class="panel-heading">
@@ -21,22 +20,22 @@
                       <th>No</th>
                       <th>Date/Time</th>
                       <th>Report Title</th>
-                      <th>Author</th>
+                      <th>Staf</th>
                       <th>Detail</th>
-                      <th>Files</th>
                       <th>Aksi</th>
                     </tr>
                   </thead>
                   <tbody>
+                    @foreach ($terima_laporan as $k => $item)
                     <tr>
-                      <td>1</td>
-                      <td>8-1-2024</td>
-                      <td>Landing Page</td>
-                      <td>staf | alifa</td>
-                      <td>klik</td>
-                      <td>klik</td>
-                      <td>Setujui|Tolak|Proses</td>
+                      <td>{{$k+1}}</td>
+                      <td>{{$item->waktu}}</td>
+                      <td>{{$item->judul}}</td>
+                      <td>{{$item->staff->name}}</td>
+                      <td>{{$item->detail}}</td>
+                      <td>{{$item->status}}</td>
                     </tr>
+                    @endforeach
                   </tbody>
                 </table>
               </div>
@@ -65,7 +64,7 @@
                       <td>{{$k+1}}</td>
                       <td>{{$item->waktu}}</td>
                       <td>{{$item->judul}}</td>
-                      <td>{{$item->name}}</td>
+                      <td>{{$item->lead->name}}</td>
                       <td>{{$item->detail}}</td>
                       <td>{{$item->status}}</td>
                     </tr>

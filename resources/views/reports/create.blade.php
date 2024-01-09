@@ -11,6 +11,11 @@
         <div class="panel panel-headline">
             <div class="panel-heading">
             <h3 class="panel-title">Selamat Datang <strong>{{ Auth::user()->name }}</strong></h3>
+            @if(session('error'))
+                        <div class="alert alert-danger">
+                            {{ session('error') }}
+                        </div>
+                    @endif
             <h2>Tambah Laporan</h2>
             <form action="/admin/staf/kirim" method="POST" enctype="multipart/form-data">
                 @csrf
