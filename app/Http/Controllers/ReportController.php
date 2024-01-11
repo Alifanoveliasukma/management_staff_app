@@ -51,7 +51,8 @@ class ReportController extends Controller
 
         $staffReport->save();
         
-        return view('admin', compact('reports'));
+        return redirect()->route('halamanStaf')->with('reports', $reports);
+
     }
 
 }

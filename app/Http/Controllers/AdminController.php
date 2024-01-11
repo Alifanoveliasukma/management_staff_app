@@ -15,8 +15,9 @@ class AdminController extends Controller
     }
     function index()
     {
+        $terima_laporan = Reportstaf::with('staff')->paginate(30);
         $reports = Reportstaf::all();
-        return view('admin', compact('reports'));
+        return view('admin', compact('reports','terima_laporan'));
     }
     function lead(){
         $terima_laporan = Reportstaf::with('staff')->paginate(30);
@@ -27,19 +28,20 @@ class AdminController extends Controller
         return view('admin', compact('reports'));
     }
 
-    function tombol_status($id){
+    function terimaStatus($id){
         $setting_status = Reportstaf::find($id);
-
-        if($setting_status){
-            if($setting_status){
-                $setting_status->status = 0;
-            }
-            else{
-                $setting_status->status = 1;
-            }
+        $setting_status->status = 'diterima';
 
         $setting_status->save();
-        }
-        return back();
+        return redirect()->route('halamanStaf');
+
+    }
+    function deleteStatus($id){
+        $setting_status = Reportstaf::find($id);
+        $setting_status->status = 'ditolak';
+
+        $setting_status->save();
+        return redirect()->route('halamanStaf');
+
     }
 }

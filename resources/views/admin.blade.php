@@ -42,6 +42,10 @@
                                 <a href="/admin/leader/tolak/{{ $item->id }}" class="btn btn-sm btn-danger">
                                     <p>Tolak</p>
                                 </a>
+                                @elseif($item->status == "diterima")
+                                  <p class="badge bg-primary text-wrap">Selesai | laporan diterima</p>
+                                @elseif($item->status == "ditolak")
+                                  <p class="badge bg-primary text-wrap">Selesai | laporan ditolak</p>
                             @endif
                             
                               </td>
