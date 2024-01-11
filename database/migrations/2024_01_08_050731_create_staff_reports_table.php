@@ -19,7 +19,7 @@ return new class extends Migration
             $table->unsignedBigInteger('lead_id'); // kolom
             $table->text('detail');
             $table->string('file')->nullable();
-            $table->enum('status', ['diterima', 'ditolak', 'proses'])->default('proses');
+            $table->integer('status')->default('1'); // 0: disabled, 1 :enabled
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users');

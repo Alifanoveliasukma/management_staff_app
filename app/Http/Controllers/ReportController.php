@@ -18,7 +18,7 @@ class ReportController extends Controller
         return view('reports.create', compact('users'));
     }
 
-    public function store(Request $request)
+    public function store(Request $request )
     {
         $reports = Reportstaf::with('lead')->paginate(30);
 
@@ -26,7 +26,7 @@ class ReportController extends Controller
             'judul' => 'required|string',
             'lead_id' => 'required|exists:users,id',
             'detail' => 'required|string',
-            'file' => 'nullable|file|max:10240', // 10 MB max, adjust as needed
+            'file' => 'nullable|file|max:10240',
         ]);
 
         if ($request->input('lead_id') == 2 || $request->input('lead_id') == 3 || $request->input('lead_id') == 4  ) {
@@ -49,10 +49,10 @@ class ReportController extends Controller
             $staffReport->file = $fileName;
         }
 
-
         $staffReport->save();
         
-        return view('admin', compact('reports','terima_laporan'));
+        return view('admin', compact('reports'));
     }
+
 }
 

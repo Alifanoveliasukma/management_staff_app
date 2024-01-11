@@ -16,28 +16,40 @@
               <div class="panel-body">
                 <table class="table table-hover">
                   <thead>
-                    <tr>
-                      <th>No</th>
-                      <th>Date/Time</th>
-                      <th>Report Title</th>
-                      <th>Staf</th>
-                      <th>Detail</th>
-                      <th>Aksi</th>
-                    </tr>
+                      <tr>
+                          <th>No</th>
+                          <th>Date/Time</th>
+                          <th>Report Title</th>
+                          <th>Staf</th>
+                          <th>Detail</th>
+                          <th>Aksi</th>
+                      </tr>
                   </thead>
                   <tbody>
-                    @foreach ($terima_laporan as $k => $item)
-                    <tr>
-                      <td>{{$k+1}}</td>
-                      <td>{{$item->waktu}}</td>
-                      <td>{{$item->judul}}</td>
-                      <td>{{$item->staff->name}}</td>
-                      <td>{{$item->detail}}</td>
-                      <td>{{$item->status}}</td>
-                    </tr>
-                    @endforeach
+                      @foreach ($terima_laporan as $k => $item)
+                          <tr>
+                              <td>{{ $k+1 }}</td>
+                              <td>{{ $item->waktu }}</td>
+                              <td>{{ $item->judul }}</td>
+                              <td>{{ $item->staff->name }}</td>
+                              <td>{{ $item->detail }}</td>
+                              <td>
+                                @if($item->status == "proses")
+                                <a href="/admin/leader/terima/{{ $item->id }}" class="btn btn-sm btn-success">
+                                    <p>Terima</p>
+                                </a>
+                            
+                                <a href="/admin/leader/tolak/{{ $item->id }}" class="btn btn-sm btn-danger">
+                                    <p>Tolak</p>
+                                </a>
+                            @endif
+                            
+                              </td>
+                          </tr>
+                      @endforeach
                   </tbody>
-                </table>
+              </table>
+              
               </div>
             </div>
             @endif
@@ -66,7 +78,11 @@
                       <td>{{$item->judul}}</td>
                       <td>{{$item->lead->name}}</td>
                       <td>{{$item->detail}}</td>
-                      <td>{{$item->status}}</td>
+                      <td>
+                        {{-- <a href="#" class="btn btn-sm btn-{{ $item->status ? 'success' : 'danger'}}"> --}}
+                         <p>{{ $item->status ? 'Proses' : 'Diterima' }}</p> 
+                        {{-- </a> --}}
+                      </td>
                     </tr>
                     @endforeach
                   </tbody>

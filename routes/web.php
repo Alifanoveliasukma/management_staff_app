@@ -34,6 +34,7 @@ Route::middleware(['auth'])->group(function(){
     Route::get('/logout', [SesiController::class, 'logout']);
     Route::get('/admin/staf/laporan',[ReportController::class, 'create']);
     Route::post('/admin/staf/kirim', [ReportController::class, 'store'])->middleware('userAkses:staf')->name('admin.staf.kirim');
+    Route::get('/admin/leader/{id}', [AdminController::class, 'tombol_status'])->middleware('userAkses:lead');
 });
 
 

@@ -26,4 +26,20 @@ class AdminController extends Controller
         $reports = Reportstaf::all();
         return view('admin', compact('reports'));
     }
+
+    function tombol_status($id){
+        $setting_status = Reportstaf::find($id);
+
+        if($setting_status){
+            if($setting_status){
+                $setting_status->status = 0;
+            }
+            else{
+                $setting_status->status = 1;
+            }
+
+        $setting_status->save();
+        }
+        return back();
+    }
 }
