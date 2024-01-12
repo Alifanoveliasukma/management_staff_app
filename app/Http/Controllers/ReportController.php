@@ -72,5 +72,12 @@ class ReportController extends Controller
         return redirect()->route('halamanStaf');
     }
 
+    public function delete_laporan($id)
+    {
+        $reports = Reportstaf::find($id);
+        $reports->delete();
+        return redirect()->route('halamanStaf');
+    }
+
 }
 

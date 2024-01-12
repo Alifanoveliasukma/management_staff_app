@@ -37,7 +37,7 @@ Route::middleware(['auth'])->group(function(){
     Route::post('/admin/staf/kirim', [ReportController::class, 'store'])->middleware('userAkses:staf')->name('admin.staf.kirim');
     Route::get('/admin/staf/update/{id}',[ReportController::class, 'view_update']);
     Route::put('/admin/staf/{id}/update/',[ReportController::class, 'update_store']);
-    Route::get('/admin/staf/delete/{id}',[ReportController::class, 'delete_laporan']);
+    Route::delete('/admin/staf/hapus/{id}',[ReportController::class, 'delete_laporan'])->name('reports.delete');
     // Lead
     Route::get('/admin/leader/terima/{id}', [AdminController::class, 'terimaStatus'])->name('reportstaf.status-terima');
     Route::get('/admin/leader/tolak/{id}', [AdminController::class, 'deleteStatus'])->name('reportstaf.status-tolak');

@@ -86,9 +86,11 @@
                       <td>{{$item->status}}</td>
                       <td>
                         @if($item->status == "diterima")
-                        <a href="/admin/staf/hapus/{{ $item->id }}" class="btn btn-sm btn-success">
-                            <p>Hapus Laporan</p>
-                        </a>
+                        <form action="{{ route('reports.delete', $item->id) }}" method="post">
+                          @csrf
+                          @method('DELETE')
+                          <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                        </form>
                         @elseif($item->status == "ditolak")
                           <a href="/admin/staf/update/{{ $item->id }}"><p class="badge bg-danger text-wrap">Update | Revisi</p></a>
                         @endif
