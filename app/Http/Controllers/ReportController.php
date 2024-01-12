@@ -55,5 +55,22 @@ class ReportController extends Controller
 
     }
 
+    public function view_update(string $id)
+    {
+        $reports = Reportstaf::findOrFail($id);
+
+        return view('reports.edit', compact('reports'));
+    }
+
+    public function update_store(Request $request, $id){
+        $request->validate([
+            'judul' => 'required|string',
+            'detail' => 'required|string',
+        ]);
+        $reports = Reportstaf::find($id);
+        $reports->update($request->all());
+        return redirect()->route('halamanStaf');
+    }
+
 }
 

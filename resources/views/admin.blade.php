@@ -72,6 +72,7 @@
                       <th>Recipient</th>
                       <th>Detail</th>
                       <th>Status</th>
+                      <th>Aksi</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -82,10 +83,15 @@
                       <td>{{$item->judul}}</td>
                       <td>{{$item->lead->name}}</td>
                       <td>{{$item->detail}}</td>
+                      <td>{{$item->status}}</td>
                       <td>
-                        {{-- <a href="#" class="btn btn-sm btn-{{ $item->status ? 'success' : 'danger'}}"> --}}
-                         <p>{{ $item->status ? 'Proses' : 'Diterima' }}</p> 
-                        {{-- </a> --}}
+                        @if($item->status == "diterima")
+                        <a href="/admin/staf/hapus/{{ $item->id }}" class="btn btn-sm btn-success">
+                            <p>Hapus Laporan</p>
+                        </a>
+                        @elseif($item->status == "ditolak")
+                          <a href="/admin/staf/update/{{ $item->id }}"><p class="badge bg-danger text-wrap">Update | Revisi</p></a>
+                        @endif
                       </td>
                     </tr>
                     @endforeach

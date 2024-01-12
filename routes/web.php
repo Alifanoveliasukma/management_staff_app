@@ -32,8 +32,13 @@ Route::middleware(['auth'])->group(function(){
     Route::get('/admin/leader', [AdminController::class, 'lead'])->middleware('userAkses:lead');
     Route::get('/admin/staf', [AdminController::class, 'staf'])->middleware('userAkses:staf')->name('halamanStaf');
     Route::get('/logout', [SesiController::class, 'logout']);
+    // Staf
     Route::get('/admin/staf/laporan',[ReportController::class, 'create']);
     Route::post('/admin/staf/kirim', [ReportController::class, 'store'])->middleware('userAkses:staf')->name('admin.staf.kirim');
+    Route::get('/admin/staf/update/{id}',[ReportController::class, 'view_update']);
+    Route::put('/admin/staf/{id}/update/',[ReportController::class, 'update_store']);
+    Route::get('/admin/staf/delete/{id}',[ReportController::class, 'delete_laporan']);
+    // Lead
     Route::get('/admin/leader/terima/{id}', [AdminController::class, 'terimaStatus'])->name('reportstaf.status-terima');
     Route::get('/admin/leader/tolak/{id}', [AdminController::class, 'deleteStatus'])->name('reportstaf.status-tolak');
 });
