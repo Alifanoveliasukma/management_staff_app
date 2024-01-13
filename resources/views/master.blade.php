@@ -59,8 +59,8 @@
 			<div class="sidebar-scroll">
 				<nav>
 					<ul class="nav">
-						<li><a href="#" class="active"><i class="lnr lnr-home"></i> <span>Dashboard</span></a></li>
 						@if(Auth::user()->role == 'lead')
+						<li><a href="#" class="active"><i class="lnr lnr-home"></i> <span>Dashboard</span></a></li>
 						<li>
 							<a href="#subPages" data-toggle="collapse" class="collapsed"><i class="lnr lnr-file-empty"></i> <span>Cek</span> <i class="icon-submenu lnr lnr-chevron-left"></i></a>
 							<div id="subPages" class="collapse ">
@@ -72,12 +72,13 @@
 						</li>
 						@endif
 						@if(Auth::user()->role == 'staf')
+						<li><a href="/admin/staf" class="active"><i class="lnr lnr-home"></i> <span>Dashboard</span></a></li>
 						<li>
 							<a href="#subPages" data-toggle="collapse" class="collapsed"><i class="lnr lnr-file-empty"></i> <span>Buat Laporan</span> <i class="icon-submenu lnr lnr-chevron-left"></i></a>
 							<div id="subPages" class="collapse ">
 								<ul class="nav">
-									<li><a href="#" class="">Laporan Tugas Harian</a></li>
-									<li><a href="#" class="">Laporan Kehadiran</a></li>
+									<li><a href="/admin/staf/buatLaporan" class="">Laporan Tugas Harian</a></li>
+									<li><a href="#" class="">Laporan Kehadiran - belum jadi</a></li>
 								</ul>
 							</div>
 						</li>
