@@ -5,18 +5,17 @@
 @section('konten')
 <div class="main">
     <!-- MAIN CONTENT -->
-    <div class="main-content">
-      <div class="container-fluid">
-        <!-- OVERVIEW -->
-        <div class="panel panel-headline">
-            <div class="panel-heading">
+    <div class="panel">
+        <div class="panel-heading">
             <h3 class="panel-title">Selamat Datang <strong>{{ Auth::user()->name }}</strong></h3>
+            <h2>Tambah Laporan</h2>
             @if(session('error'))
                         <div class="alert alert-danger">
                             {{ session('error') }}
                         </div>
                     @endif
-            <h2>Tambah Laporan</h2>
+        </div>
+        <div class="panel-body">
             <form action="/admin/staf/kirim" method="POST" enctype="multipart/form-data">
                 @csrf
     
@@ -29,25 +28,22 @@
                     <label for="lead_id" class="form-label">Pilih Lead</label>
                     <select class="form-control" id="lead_id" name="lead_id" required>
                         @foreach($users as $user)
-                            <option value="{{ $user->id }}">{{ $user->name }}</option>
+                            @if($user->role == "lead")
+                                <option value="{{ $user->id }}">{{ $user->name }}</option>
+                            @endif
                         @endforeach
+                        
                     </select>
                 </div>
     
                 <div class="mb-3">
                     <label for="detail" class="form-label">Detail Laporan</label>
-                    <textarea class="form-control" id="detail" name="detail" rows="4" required></textarea>
+                    <textarea class="form-control " id="detail" name="detail" rows="4" required></textarea>
                 </div>
-    
-                
-    
-                <button type="submit" class="btn btn-primary">Simpan</button>
+                <button type="submit" class="btn btn-warning btn-toastr">Simpan</button>
             </form>
-            </div>   
+            </div>
         </div>
-        <!-- END OVERVIEW -->
-      </div>
-    </div>
+</div>
     <!-- END MAIN CONTENT -->
-  </div>
 @endsection

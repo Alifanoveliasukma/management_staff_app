@@ -11,11 +11,11 @@ class ReportController extends Controller
 {
     public function create()
     {
-        // Ambil data user untuk populate dropdown atau sesuaikan kebutuhan Anda
+        $reports = Reportstaf::all();
         $users = User::all();
          //
 
-        return view('reports.create', compact('users'));
+        return view('reports.create', compact('users', 'reports'));
     }
 
     public function store(Request $request )
@@ -30,7 +30,7 @@ class ReportController extends Controller
         ]);
 
         if ($request->input('lead_id') == 2 || $request->input('lead_id') == 3 || $request->input('lead_id') == 4  ) {
-            return redirect('/admin/staf/laporan')->with(['error' => 'Anda tidak boleh mengirim laporan kepada lead selain lead A']);
+            return redirect('/admin/staf/buatLaporan')->with(['error' => 'Anda hanya bisa mengirim laporan kepada lead A']);
 
         }
 
