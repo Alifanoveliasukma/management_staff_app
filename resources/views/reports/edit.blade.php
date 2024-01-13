@@ -20,16 +20,6 @@
                         <label for="judul" class="form-label">Judul Laporan</label>
                         <input type="text" class="form-control @error('judul') is-invalid @enderror" name="judul" value="{{ old('judul', $reports->judul) }}" placeholder="Masukkan Judul Post">
                     </div>
-        
-                    {{-- <div class="mb-3">
-                        <label for="lead_id" class="form-label">Pilih Lead</label>
-                        <select class="form-control" id="lead_id" name="lead_id" required>
-                            @foreach($users as $user)
-                                <option value="{{ $user->id }}">{{ $user->name }}</option>
-                            @endforeach
-                        </select>
-                    </div> --}}
-        
                     <div class="mb-3">
                         <label for="detail" class="form-label">Laporan</label>
                         <textarea id="detail" class="form-control" name="detail" required>{{ $reports->detail}}</textarea>

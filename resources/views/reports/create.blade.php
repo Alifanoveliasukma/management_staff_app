@@ -18,12 +18,12 @@
         <div class="panel-body">
             <form action="/admin/staf/kirim" method="POST" enctype="multipart/form-data">
                 @csrf
-    
+            
                 <div class="mb-3">
                     <label for="judul" class="form-label">Judul Laporan</label>
                     <input type="text" class="form-control" id="judul" name="judul" required>
                 </div>
-    
+            
                 <div class="mb-3">
                     <label for="lead_id" class="form-label">Pilih Lead</label>
                     <select class="form-control" id="lead_id" name="lead_id" required>
@@ -32,16 +32,22 @@
                                 <option value="{{ $user->id }}">{{ $user->name }}</option>
                             @endif
                         @endforeach
-                        
                     </select>
                 </div>
-    
+            
                 <div class="mb-3">
                     <label for="detail" class="form-label">Laporan</label>
-                    <textarea class="form-control " id="detail" name="detail" rows="4" required></textarea>
+                    <textarea class="form-control" id="detail" name="detail" rows="4" required></textarea>
                 </div>
+            
+                <div class="m-t3">
+                    <label for="gambar_laporan" class="form-label">Gambar</label>
+                    <input type="file" class="form-control" id="gambar_laporan" name="file" required>
+                </div>
+            
                 <button type="submit" class="btn btn-warning btn-toastr">Simpan</button>
             </form>
+            
             </div>
         </div>
 </div>

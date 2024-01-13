@@ -17,7 +17,7 @@
                         @elseif($reports->status == "ditolak")
                             <p>Status : <span class="label label-danger">Ditolak</span></p>
                         @else
-                            <p>Status : <span class="label label-danger">Proses</span></p>
+                            <p>Status : <span class="label label-primary">Proses</span></p>
                         @endif
                     </div>
                     <div class="panel-body">
@@ -27,25 +27,16 @@
                 </div>
                 <!-- END PANEL HEADLINE -->
             </div>
+            @if ($reports->file)
             <div class="col-md-4">
-                <!-- PANEL NO PADDING -->
-                <div class="panel">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">File atau Gambar</h3>
-                        <div class="right">
-                            <button type="button" class="btn-toggle-collapse"><i class="lnr lnr-chevron-up"></i></button>
-                            <button type="button" class="btn-remove"><i class="lnr lnr-cross"></i></button>
-                        </div>
+                <div class="card" style="width: 18rem;">
+                    <img src="{{ asset('storage/' . $reports->file) }}" alt="Laporan Gambar" style="width: 100%; height: 100%;">
+                    <div class="card-body">
+                      <p class="card-text">hehe</p>
                     </div>
-                    <div class="panel-body no-padding bg-primary text-center">
-                        <div class="padding-top-30 padding-bottom-30">
-                            <i class="fa fa-thumbs-o-up fa-5x"></i>
-                            <h3>No Content Padding</h3>
-                        </div>
-                    </div>
-                </div>
-                <!-- END PANEL NO PADDING -->
+                  </div>
             </div>
+            @endif
         </div>
     </div>
 </div>
