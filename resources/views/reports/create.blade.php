@@ -37,7 +37,7 @@
                 </div>
     
                 <div class="mb-3">
-                    <label for="detail" class="form-label">Detail Laporan</label>
+                    <label for="detail" class="form-label">Laporan</label>
                     <textarea class="form-control " id="detail" name="detail" rows="4" required></textarea>
                 </div>
                 <button type="submit" class="btn btn-warning btn-toastr">Simpan</button>

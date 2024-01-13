@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Reportstaf;
 use App\Models\User;
-use Illuminate\Support\Facades\DB;
 
 class ReportController extends Controller
 {
@@ -77,6 +76,12 @@ class ReportController extends Controller
         $reports = Reportstaf::find($id);
         $reports->delete();
         return redirect()->route('halamanStaf');
+    }
+
+    public function detail_laporan($id)
+    {
+        $reports = Reportstaf::find($id);
+        return view('reports.detail', compact('reports'));
     }
 
 }

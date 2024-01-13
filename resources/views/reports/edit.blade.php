@@ -31,7 +31,7 @@
                     </div> --}}
         
                     <div class="mb-3">
-                        <label for="detail" class="form-label">Detail Laporan</label>
+                        <label for="detail" class="form-label">Laporan</label>
                         <textarea id="detail" class="form-control" name="detail" required>{{ $reports->detail}}</textarea>
                     </div>
         
