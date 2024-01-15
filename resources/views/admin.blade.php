@@ -25,7 +25,7 @@
                             <td>{{ $item->waktu }}</td>
                             <td>{{ $item->judul }}</td>
                             <td>{{ $item->staff->name }}</td>
-                            <td>{{ $item->detail }}</td>
+                            <td><a href="/admin/lead/lihat/{{$item->id}}"><span class="label label-info">Lihat</span></td>
                             <td>
                               @if($item->status == "proses")
                               <a href="/admin/leader/terima/{{ $item->id }}" class="btn btn-sm btn-success">

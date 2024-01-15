@@ -84,5 +84,11 @@ class ReportController extends Controller
         return view('reports.detail', compact('reports'));
     }
 
+    public function detail_laporan_lead($id)
+    {
+        $reports = Reportstaf::find($id);
+        return view('reports.detail', compact('reports'));
+    }
+
 }
 
