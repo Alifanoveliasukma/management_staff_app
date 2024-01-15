@@ -42,6 +42,4 @@ Route::middleware(['auth'])->group(function(){
     // Lead
     Route::get('/admin/leader/terima/{id}', [AdminController::class, 'terimaStatus'])->name('reportstaf.status-terima');
     Route::get('/admin/leader/tolak/{id}', [AdminController::class, 'deleteStatus'])->name('reportstaf.status-tolak');
-});
-
-
+});Route::get('/admin/lead/lihat/{id}',[ReportController::class, 'detail_laporan_lead'])->middleware('userAkses:lead')->name('reports.detail_lead');
