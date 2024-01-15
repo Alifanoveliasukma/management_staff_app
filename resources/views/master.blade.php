@@ -60,12 +60,12 @@
 				<nav>
 					<ul class="nav">
 						@if(Auth::user()->role == 'lead')
-						<li><a href="#" class="active"><i class="lnr lnr-home"></i> <span>Dashboard</span></a></li>
+						<li><a href="/admin/leader" class="active"><i class="lnr lnr-home"></i> <span>Dashboard</span></a></li>
 						<li>
 							<a href="#subPages" data-toggle="collapse" class="collapsed"><i class="lnr lnr-file-empty"></i> <span>Cek</span> <i class="icon-submenu lnr lnr-chevron-left"></i></a>
 							<div id="subPages" class="collapse ">
 								<ul class="nav">
-									<li><a href="#" class="">Lihat Laporan Staf saya</a></li>
+									<li><a href="/admin/leader" class="">Lihat Laporan Staf saya</a></li>
 									<li><a href="#" class="">Lihat Laporan Semua Staf</a></li>
 								</ul>
 							</div>
