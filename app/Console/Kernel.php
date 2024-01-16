@@ -12,7 +12,10 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule): void
     {
-        // $schedule->command('inspire')->hourly();
+        $schedule->command('app:auto-daily-report')->everyMinute(); //buat demo aja setiap menit
+        // $schedule->command('app:auto-daily-report')->daily();
+        // $schedule->command('app:auto-daily-report')->dailyAt('03:30'); // Eksekusi setiap hari pukul 03:30
+
     }
 
     /**
