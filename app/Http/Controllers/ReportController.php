@@ -90,5 +90,9 @@ class ReportController extends Controller
         return view('reports.detail', compact('reports'));
     }
 
+    public function belum(){
+        return view('reports.belum');
+    }
+
 }
 

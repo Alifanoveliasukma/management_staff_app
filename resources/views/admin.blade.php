@@ -81,7 +81,11 @@
                         <button type="submit"><span class="label label-danger">Hapus</span></button>
                       </form>
                       @elseif($item->status == "ditolak")
-                        <a href="/admin/staf/update/{{ $item->id }}"><span class="label label-warning">Update | Revisi</span></a>
+                        <a href="/admin/staf/update/{{ $item->id }}"><span class="label label-warning">Update</span></a>
+                        <form action="{{ route('reports.delete', $item->id) }}" method="post">
+                          @csrf
+                          @method('DELETE')
+                          <button type="submit"><span class="label label-danger">Hapus</span></button>
                       @else
                       <a href="#"><span class="label label-warning">--</span></a>
                       @endif

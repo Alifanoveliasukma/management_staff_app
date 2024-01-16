@@ -66,7 +66,7 @@
 							<div id="subPages" class="collapse ">
 								<ul class="nav">
 									<li><a href="/admin/leader" class="">Lihat Laporan Staf saya</a></li>
-									<li><a href="#" class="">Lihat Laporan Semua Staf</a></li>
+									<li><a href="/admin/lead/belum" class="">Lihat Laporan Semua Staf</a></li>
 								</ul>
 							</div>
 						</li>

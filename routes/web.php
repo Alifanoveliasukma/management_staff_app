@@ -32,6 +32,7 @@ Route::middleware(['auth'])->group(function(){
     Route::get('/admin/leader', [AdminController::class, 'lead'])->middleware('userAkses:lead');
     Route::get('/admin/staf', [AdminController::class, 'staf'])->middleware('userAkses:staf')->name('halamanStaf');
     Route::get('/logout', [SesiController::class, 'logout']);
+    Route::get('/admin/lead/belum',[ReportController::class, 'belum']);
     // Staf
     Route::get('/admin/staf/buatLaporan',[ReportController::class, 'create'])->middleware('userAkses:staf');
     Route::post('/admin/staf/kirim', [ReportController::class, 'store'])->middleware('userAkses:staf')->name('admin.staf.kirim');
@@ -42,4 +43,6 @@ Route::middleware(['auth'])->group(function(){
     // Lead
     Route::get('/admin/leader/terima/{id}', [AdminController::class, 'terimaStatus'])->name('reportstaf.status-terima');
     Route::get('/admin/leader/tolak/{id}', [AdminController::class, 'deleteStatus'])->name('reportstaf.status-tolak');
-});Route::get('/admin/lead/lihat/{id}',[ReportController::class, 'detail_laporan_lead'])->middleware('userAkses:lead')->name('reports.detail_lead');
+    Route::get('/admin/lead/lihat/{id}',[ReportController::class, 'detail_laporan_lead'])->middleware('userAkses:lead')->name('reports.detail_lead');
+    
+});
