@@ -20,12 +20,11 @@ class ReportController extends Controller
     public function store(Request $request )
     {
         $reports = Reportstaf::with('lead')->paginate(30);
+        $lead_si_staf = User::where('name', 'Lead A')->first();
 
         $request->validate([
             'judul' => 'required|string',
-            'lead_id' => 'required|exists:users,id',
             'detail' => 'required|string',
-            'file' => 'nullable|file|max:10240',
         ]);
 
         if ($request->input('lead_id') == 2 || $request->input('lead_id') == 3 || $request->input('lead_id') == 4  ) {
@@ -37,7 +36,7 @@ class ReportController extends Controller
         $staffReport->waktu = now();
         $staffReport->judul = $request->input('judul');
         $staffReport->user_id = auth()->user()->id;
-        $staffReport->lead_id = $request->input('lead_id');
+        $staffReport->lead_id = $lead_si_staf->id;
         $staffReport->detail = $request->input('detail');
 
         // Upload file jika ada
@@ -93,6 +92,7 @@ class ReportController extends Controller
     public function belum(){
         return view('reports.belum');
     }
+    
 
 }
 

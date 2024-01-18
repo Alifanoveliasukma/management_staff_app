@@ -8,7 +8,7 @@
     <div class="panel">
         <div class="panel-heading">
             <h3 class="panel-title">Selamat Datang <strong>{{ Auth::user()->name }}</strong></h3>
-            <h2>Tambah Laporan</h2>
+            <h2>Buat Laporan</h2>
             @if(session('error'))
                         <div class="alert alert-danger">
                             {{ session('error') }}
@@ -25,24 +25,8 @@
                 </div>
             
                 <div class="mb-3">
-                    <label for="lead_id" class="form-label">Pilih Lead</label>
-                    <select class="form-control" id="lead_id" name="lead_id" required>
-                        @foreach($users as $user)
-                            @if($user->role == "lead")
-                                <option value="{{ $user->id }}">{{ $user->name }}</option>
-                            @endif
-                        @endforeach
-                    </select>
-                </div>
-            
-                <div class="mb-3">
                     <label for="detail" class="form-label">Laporan</label>
                     <textarea class="form-control" id="detail" name="detail" rows="4" required></textarea>
-                </div>
-            
-                <div class="m-t3">
-                    <label for="gambar_laporan" class="form-label">Gambar</label>
-                    <input type="file" class="form-control" id="gambar_laporan" name="file" required>
                 </div>
             
                 <button type="submit" class="btn btn-warning btn-toastr">Simpan</button>

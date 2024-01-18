@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Reportstaf;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -24,8 +25,9 @@ class AdminController extends Controller
         return view('admin', compact('terima_laporan'));
     }
     function staf(){
+        $lead_si_staf = User::where('name', 'Lead A')->first();
         $reports = Reportstaf::all();
-        return view('admin', compact('reports'));
+        return view('admin', compact('reports', 'lead_si_staf'));
     }
 
     function terimaStatus($id){
