@@ -21,11 +21,11 @@
                 </ul>
             </div>
         @endif
-        <form action="" method="POST">
+        <form action="/proseslogin" method="POST">
             @csrf
             <div class="mb-3">
-                <label for="email" class="form-label">Email</label>
-                <input type="email" value="{{ old('email') }}" name="email" class="form-control">
+                <label for="nik" class="form-label">NIK</label>
+                <input  name="nik" class="form-control">
             </div>
             <div class="mb-3">
                 <label for="password" class="form-label">Password</label>
