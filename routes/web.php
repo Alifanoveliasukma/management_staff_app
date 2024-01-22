@@ -19,9 +19,19 @@ use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-Route::get('/', [SesiController::class, 'index'])->name('login');
-Route::post('/proseslogin', [AuthController::class, 'proseslogin']);
-Route::get('/dashboard', [DashboardController::class, 'index']);
+
+
+Route::middleware(['guest:karyawan'])->group(function () {
+    Route::get('/', function() {
+        return view('login');
+    })->name('login');
+    Route::post('/proseslogin', [AuthController::class, 'proseslogin']);
+});
+
+Route::middleware(['auth:karyawan'])->group(function (){
+    Route::get('/dashboard', [DashboardController::class, 'index']);
+    Route::get('/proseslogout',[AuthController::class, 'proseslogout']);
+});
 
 // Route::middleware(['guest'])->group(function(){ 
 //     Route::get('/', [SesiController::class, 'index'])->name('login');
