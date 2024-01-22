@@ -146,7 +146,7 @@ pre.highlight::-webkit-scrollbar-corner,
   opacity: 0.24;
   position: absolute;
   width: 100%;
-  left: 0;
+  right: 0;
   top: 0;
   height: 100%;
   border-radius: 2px 2px 0 0;
@@ -208,7 +208,7 @@ pre.highlight::-webkit-scrollbar-corner,
   display: flex;
   flex-wrap: wrap;
   padding: 0;
-  margin: 0 -2px -1px 0;
+  margin: 0 0 -1px -2px;
   list-style: none;
 }
 .demo-icons-list > * {
@@ -227,7 +227,7 @@ pre.highlight::-webkit-scrollbar-corner,
   aspect-ratio: 1;
   text-align: center;
   padding: 0.5rem;
-  border-right: var(--tblr-border-width) var(--tblr-border-style) var(--tblr-border-color);
+  border-left: var(--tblr-border-width) var(--tblr-border-style) var(--tblr-border-color);
   border-bottom: var(--tblr-border-width) var(--tblr-border-style) var(--tblr-border-color);
   color: inherit;
   cursor: pointer;
@@ -243,10 +243,10 @@ pre.highlight::-webkit-scrollbar-corner,
 
 .settings-btn {
   position: fixed;
-  right: -1px;
+  left: -1px;
   top: 10rem;
-  border-top-right-radius: 0;
-  border-bottom-right-radius: 0;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
   box-shadow: rgba(var(--tblr-body-color-rgb), 0.04) 0 2px 4px 0;
 }
 
@@ -260,10 +260,10 @@ pre.highlight::-webkit-scrollbar-corner,
   box-shadow: rgba(var(--tblr-body-color-rgb), 0.04) 0 2px 4px 0;
 }
 .settings-scheme-light {
-  background: linear-gradient(135deg, #ffffff 50%, #fcfdfe 50%);
+  background: linear-gradient(-135deg, #ffffff 50%, #fcfdfe 50%);
 }
 .settings-scheme-mixed {
-  background-image: linear-gradient(135deg, #182433 50%, #fff 50%);
+  background-image: linear-gradient(-135deg, #182433 50%, #fff 50%);
 }
 .settings-scheme-transparent {
   background: #fcfdfe;
@@ -272,5 +272,5 @@ pre.highlight::-webkit-scrollbar-corner,
   background: #182433;
 }
 .settings-scheme-colored {
-  background-image: linear-gradient(135deg, var(--tblr-primary) 50%, #fcfdfe 50%);
+  background-image: linear-gradient(-135deg, var(--tblr-primary) 50%, #fcfdfe 50%);
 }
