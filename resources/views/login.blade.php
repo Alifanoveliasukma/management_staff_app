@@ -12,14 +12,13 @@
     <div class="container py-5">
         <div class="w-50 center border rounded px-3 py-3 mx-auto">
         <h1>Login</h1>
-        @if($errors->any())
-            <div class="alert alert-danger">
-                <ul>
-                    @foreach ($errors->all() as $item)
-                        <li>{{ $item }}</li>
-                    @endforeach
-                </ul>
-            </div>
+        @php 
+        $messagewarning = Session::get('warning');
+        @endphp
+        @if (Session::get('warning'))
+        <div class=" alert alert-danger">
+           {{ $messagewarning }}
+        </div>
         @endif
         <form action="/proseslogin" method="POST">
             @csrf
