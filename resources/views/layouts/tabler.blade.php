@@ -30,17 +30,15 @@
     </style>
   </head>
   <body >
-    <script src="{{ asset('tabler/js/demo-theme.min.js?1684106062')}}"></script>
-    <div class="page">
-      <!-- Sidebar -->
-      @include('layouts.admin.sidebar')
-      <!-- Navbar -->
-      @include('layouts.admin.header')
-      <div class="page-wrapper">
+    <body >
+      <script src="./dist/js/demo-theme.min.js?1684106062"></script>
+      <div class="page">
+        <!-- Sidebar -->
+        @include('layouts.admin.sidebar')
+        <!-- Navbar -->
+        @include('layouts.admin.header')
         @yield('content')
-        @include('layouts.admin.footer')
       </div>
-    </div>
     <!-- Libs JS -->
     <script src="{{ asset('tabler/libs/apexcharts/dist/apexcharts.min.js?1684106062')}}" defer></script>
     <script src="{{ asset('tabler/libs/jsvectormap/dist/js/jsvectormap.min.js?1684106062')}}" defer></script>
