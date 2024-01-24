@@ -4,6 +4,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CekController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\KaryawanController;
 use App\Http\Controllers\ReportController;
 use App\Http\Controllers\ReportsController;
 use App\Http\Controllers\SesiController;
@@ -47,6 +48,10 @@ Route::middleware(['auth:karyawan'])->group(function (){
 Route::middleware(['auth:user'])->group(function(){
     Route::get('/proseslogoutadmin',[AuthController::class, 'proseslogoutadmin']);
     Route::get('panel/dashboardadmin', [DashboardController::class, 'dashboardadmin']);
+
+    //staf
+    Route::get('/staf', [KaryawanController::class, 'index']);
+    Route::POST('/staf/store', [KaryawanController::class, 'store_staf']);
 });
 
 
