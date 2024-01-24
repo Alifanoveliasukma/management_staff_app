@@ -13,4 +13,8 @@ class DashboardController extends Controller
         $data_reports = DB::table('reports')->where('nik', $nik)->get();
         return view('dashboard.dashboard', compact('data_reports'));
     }
+
+    public function dashboardadmin(){
+        return view('dashboard.dashboardadmin');
+    }
 }

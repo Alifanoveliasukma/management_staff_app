@@ -22,5 +22,22 @@ class AuthController extends Controller
             return redirect('/');
         }
     }
+    public function proseslogoutadmin(){ 
+        if(Auth::guard('user')->check()){
+            Auth::guard('user')->logout();
+            return redirect('/panel');
+        }
+    }
+
+    public function prosesloginadmin(Request $request)
+    {
+        if(Auth::guard('user')->attempt(['email'=> $request->email, 'password' => $request->password])){
+            return redirect('/dashboardadmin');
+        } else {
+            return redirect('/panel')->with(['warning' => 'Email / Password Salah']);
+        }
+    }
+
+
 }
 // $2y$12$Wl0xf/o69JQp3/PjCJcViOgA2w97ELlvHH/7e9AXZMAkoZAbUqMFm
