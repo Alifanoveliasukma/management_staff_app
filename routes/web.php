@@ -5,6 +5,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CekController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ReportController;
+use App\Http\Controllers\ReportsController;
 use App\Http\Controllers\SesiController;
 use Illuminate\Support\Facades\Route;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
@@ -23,7 +24,7 @@ use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 Route::middleware(['guest:karyawan'])->group(function () {
     Route::get('/', function() {
-        return view('login');
+        return view('auth.login');
     })->name('login');
     Route::post('/proseslogin', [AuthController::class, 'proseslogin']);
 });
@@ -31,6 +32,9 @@ Route::middleware(['guest:karyawan'])->group(function () {
 Route::middleware(['auth:karyawan'])->group(function (){
     Route::get('/dashboard', [DashboardController::class, 'index']);
     Route::get('/proseslogout',[AuthController::class, 'proseslogout']);
+
+    // Reports
+    Route::post('/report/create', [ReportsController::class, 'store_report']);
 });
 
 // Route::middleware(['guest'])->group(function(){ 
