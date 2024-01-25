@@ -5,6 +5,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CekController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\KaryawanController;
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\ReportController;
 use App\Http\Controllers\ReportsController;
 use App\Http\Controllers\SesiController;
@@ -51,8 +52,10 @@ Route::middleware(['auth:user'])->group(function(){
 
     //staf
     Route::get('/staf', [KaryawanController::class, 'index']);
-    Route::POST('/staf/store', [KaryawanController::class, 'store_staf']);
+    Route::post('/staf/store', [KaryawanController::class, 'store_staf']);
+    Route::post('/staf/update/{id}',[KaryawanController::class, 'update_staf']);
 });
+
 
 
 
