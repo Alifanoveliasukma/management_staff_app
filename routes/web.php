@@ -57,6 +57,13 @@ Route::middleware(['auth:user'])->group(function(){
     Route::post('/staf/store', [KaryawanController::class, 'store_staf']);
     Route::put('/staf/update',[KaryawanController::class, 'update_staf']);
     Route::post('/staf/delete/{id}',[KaryawanController::class, 'delete_staf']);
+    Route::get('/staf/buatlaporan', [KaryawanController::class, 'buat_laporan']);
+    Route::post('/staf/store/report', [KaryawanController::class, 'store_report']);
+
+
+    //status
+    Route::get('/admin/leader/terima/{id}', [KaryawanController::class, 'terimaStatus'])->name('reportstaf.status-terima');
+    Route::get('/admin/leader/tolak/{id}', [KaryawanController::class, 'deleteStatus'])->name('reportstaf.status-tolak');
 });
 
 
@@ -77,7 +84,6 @@ Route::middleware(['auth:user'])->group(function(){
 //     Route::get('/admin/leader', [AdminController::class, 'lead'])->middleware('userAkses:lead');
 //     Route::get('/admin/staf', [AdminController::class, 'staf'])->middleware('userAkses:staf')->name('halamanStaf');
 //     Route::get('/logout', [SesiController::class, 'logout']);
-//     Route::get('/admin/lead/belum',[ReportController::class, 'belum']);
 //     // Staf
 //     Route::get('/admin/staf/buatLaporan',[ReportController::class, 'create'])->middleware('userAkses:staf');
 //     Route::post('/admin/staf/kirim', [ReportController::class, 'store'])->middleware('userAkses:staf')->name('admin.staf.kirim');

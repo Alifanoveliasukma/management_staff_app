@@ -86,4 +86,69 @@ class KaryawanController extends Controller
         $data_reports = DB::table('reports')->get();
         return view('staf.laporan_staf', compact('data_reports'));
     }
+
+    public function terimaStatus($id){
+        $status = 0;
+
+        try {
+            $data = [
+                'status' => $status,
+            ];
+            $simpan = DB::table('reports')->where('id', $id)->update($data);
+
+            if($simpan){
+                return redirect('/panel/dashboardadmin')->with('success', 'Status Berhasil di ubah.');
+            }
+        } catch (\Exception $e){
+            return redirect('/panel/dashboardadmin')->with(['warning' => 'Status Gagal diupdate']);
+            
+        }
+    }
+
+    public function deleteStatus($id){
+        $status = 2;
+
+        try {
+            $data = [
+                'status' => $status,
+            ];
+            $simpan = DB::table('reports')->where('id', $id)->update($data);
+           
+            if($simpan){
+                return redirect('/panel/dashboardadmin')->with('success', 'Status berhasil diubah');
+            }
+        } catch (\Exception $e){
+            redirect('/panel/dashboardadmin')->with('warning', 'Status Gagal diupdate.');
+            
+        }
+    }
+
+    public function buat_laporan(){
+        $report = DB::table('reportlead')
+        ->join('karyawan', 'reportlead.staf_id', '=', 'karyawan.id')
+        ->select('reportlead.*', 'karyawan.nama_lengkap as name') // Sesuaikan dengan kolom yang sesuai
+        ->get();
+        $staf = DB::table('karyawan')->get();
+        return view('staf.laporan-lead', compact ('report','staf' ));
+    }
+
+    public function store_report(Request $request){
+        $judul_laporan = $request->judul_laporan;
+        $isi_laporan = $request->isi_laporan;
+        $staf_id = $request->staf_id;
+
+        try {
+            $data = [
+                'judul_laporan' => $judul_laporan,
+                'isi_laporan' => $isi_laporan,
+                'staf_id' => $staf_id,
+            ];
+            $simpan = DB::table('reportlead')->insert($data);
+            if($simpan){
+                return redirect('/staf/buatlaporan')->with('success', 'data berhasil ditambahkan.');
+            }
+        } catch (\Exception $e){
+            return redirect('/staf/buatlaporan')->with('warning', 'data gagal ditambahkan.');
+        }
+    }
 }
