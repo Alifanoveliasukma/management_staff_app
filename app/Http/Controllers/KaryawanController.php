@@ -38,10 +38,10 @@ class KaryawanController extends Controller
             ];
             $simpan = DB::table('karyawan')->insert($data);
             if($simpan){
-                return Redirect::back()->with(['success' => 'User berhasil disimpan']);
+                return Redirect::back()->with(['success' => 'Staf berhasil disimpan']);
             }
         } catch (\Exception $e){
-            return Redirect::back()->with(['success' => 'User Gagal disimpan']);
+            return Redirect::back()->with(['warning' => 'Staf Gagal disimpan']);
         }
     }
 
@@ -80,5 +80,10 @@ class KaryawanController extends Controller
         } else{
             return Redirect::back()->with(['success' => 'Data gagal dihapus']);
         }
+    }
+
+    public function laporan_karyawan(){
+        $data_reports = DB::table('reports')->get();
+        return view('staf.laporan_staf', compact('data_reports'));
     }
 }

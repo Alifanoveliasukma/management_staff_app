@@ -52,6 +52,7 @@ Route::middleware(['auth:user'])->group(function(){
     Route::get('panel/dashboardadmin', [DashboardController::class, 'dashboardadmin']);
 
     //staf
+    Route::get('/staf/laporan_staf', [KaryawanController::class, 'laporan_karyawan']);
     Route::get('/staf', [KaryawanController::class, 'index'])->name('dashboard');
     Route::post('/staf/store', [KaryawanController::class, 'store_staf']);
     Route::put('/staf/update',[KaryawanController::class, 'update_staf']);
