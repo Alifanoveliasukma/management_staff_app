@@ -45,8 +45,9 @@
     <script src="{{ asset('tabler/libs/jsvectormap/dist/maps/world.js?1684106062')}}" defer></script>
     <script src="{{ asset('tabler/libs/jsvectormap/dist/maps/world-merc.js?1684106062') }}" defer></script>
     <!-- Tabler Core -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <script src="{{ asset('tabler/js/tabler.min.js?1684106062')}}" defer></script>
     <script src="{{ asset('tabler/js/demo.min.js?1684106062')}}" defer></script>
-    
+    @stack('myscript')
   </body>
 </html>
