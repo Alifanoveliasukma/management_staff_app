@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Redirect;
 
 class DashboardController extends Controller
 {
@@ -14,7 +15,10 @@ class DashboardController extends Controller
         return view('dashboard.dashboard', compact('data_reports'));
     }
 
+    
     public function dashboardadmin(){
-        return view('dashboard.dashboardadmin');
+        $data_reports = DB::table('reports')->get();
+        $karyawan = DB::table('karyawan')->get();
+        return view('dashboard.dashboardadmin', compact('karyawan', 'data_reports'));
     }
 }
