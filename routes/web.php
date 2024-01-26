@@ -51,9 +51,10 @@ Route::middleware(['auth:user'])->group(function(){
     Route::get('panel/dashboardadmin', [DashboardController::class, 'dashboardadmin']);
 
     //staf
-    Route::get('/staf', [KaryawanController::class, 'index']);
+    Route::get('/staf', [KaryawanController::class, 'index'])->name('dashboard');
     Route::post('/staf/store', [KaryawanController::class, 'store_staf']);
-    Route::post('/staf/update/{id}',[KaryawanController::class, 'update_staf']);
+    Route::put('/staf/update',[KaryawanController::class, 'update_staf']);
+    Route::post('/staf/delete/{id}',[KaryawanController::class, 'delete_staf']);
 });
 
 
