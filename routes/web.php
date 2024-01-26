@@ -23,7 +23,6 @@ use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 |
 */
 
-
 Route::middleware(['guest:karyawan'])->group(function () {
     Route::get('/', function() {
         return view('auth.login');
@@ -39,11 +38,13 @@ Route::middleware(['guest:user'])->group(function () {
 });
 
 Route::middleware(['auth:karyawan'])->group(function (){
-    Route::get('/dashboard', [DashboardController::class, 'index']);
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard-staf');
     Route::get('/proseslogout',[AuthController::class, 'proseslogout']);
 
     // Reports
     Route::post('/report/create', [ReportsController::class, 'store_report']);
+    Route::put('/report/update', [ReportsController::class, 'update_report']);
+    Route::post('/report/delete/{id}',[ReportsController::class, 'delete_report']);
 });
 
 Route::middleware(['auth:user'])->group(function(){
