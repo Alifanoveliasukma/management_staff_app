@@ -59,6 +59,7 @@ Route::middleware(['auth:user'])->group(function(){
     Route::post('/staf/delete/{id}',[KaryawanController::class, 'delete_staf']);
     Route::get('/staf/buatlaporan', [KaryawanController::class, 'buat_laporan']);
     Route::post('/staf/store/report', [KaryawanController::class, 'store_report']);
+    Route::post('/staf/delete/report/{id}', [KaryawanController::class, 'delete_report']);
 
 
     //status
